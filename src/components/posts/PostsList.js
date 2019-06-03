@@ -1,0 +1,43 @@
+import React from 'react'
+import PostsService from '../../services/PostsService'
+import Post from './Post';
+
+class PostsList extends React.Component {
+  state = {
+    posts: []
+  }
+
+  fetchPosts = () => {
+    PostsService.getPosts().then(
+      response => {
+        this.setState({ posts: response.data })
+      },
+      error => alert('ERROR!!!')
+    )
+  }
+
+  componentDidMount() {
+    this.fetchPosts()
+  }
+
+  deletePost = (postId) => {
+    PostsService.deletePost(postId).then(
+      response => {
+        this.fetchPosts()
+      },
+      error => alert('ERROR!!!')
+    )
+  }
+
+  render () {
+    return (
+      <div className="PostsList">
+        {this.state.posts.map((post, i) => (
+          <Post post={post} key={i} onDeletePost={this.deletePost}/>
+        ))}
+      </div>
+    )
+  }
+}
+  
+export default PostsList
