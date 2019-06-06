@@ -8,7 +8,10 @@ const getPosts = () => http.get('/')
 
 const deletePost = id => http.delete(`/${id}`)
 
+const createPost = post => http.post(`/`, post)
+
 export default {
   getPosts,
-  deletePost
+  deletePost,
+  createPost
 }
