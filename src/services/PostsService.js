@@ -1,14 +1,10 @@
-import axios from 'axios';
+import http from './BaseService';
 
-const http = axios.create({
-  baseURL: `${process.env.REACT_APP_API_URL}/posts`
-});
+const getPosts = () => http.get('/posts')
 
-const getPosts = () => http.get('/')
+const deletePost = id => http.delete(`/posts/${id}`)
 
-const deletePost = id => http.delete(`/${id}`)
-
-const createPost = post => http.post(`/`, post)
+const createPost = post => http.post(`/posts`, post)
 
 export default {
   getPosts,

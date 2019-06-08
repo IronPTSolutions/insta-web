@@ -11,8 +11,7 @@ class PostsList extends React.Component {
     PostsService.getPosts().then(
       response => {
         this.setState({ posts: response.data })
-      },
-      error => alert('ERROR!!!')
+      }
     )
   }
 
@@ -24,8 +23,7 @@ class PostsList extends React.Component {
     PostsService.deletePost(postId).then(
       response => {
         this.fetchPosts()
-      },
-      error => alert('ERROR!!!')
+      }
     )
   }
 
