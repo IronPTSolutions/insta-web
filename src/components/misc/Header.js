@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { AuthContext } from '../../contexts/AuthStore';
+import { withAuthContext } from '../../contexts/AuthStore';
 
 const Header = (props) => (
   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
@@ -33,12 +33,5 @@ const Header = (props) => (
   </nav>
 )
 
-const HeaderWithAuthContext = (componentProps) => {
-  return (
-    <AuthContext.Consumer>
-      {(consumerProps) => (<Header {...consumerProps} {...componentProps} />)}
-    </AuthContext.Consumer>
-  );
-}
 
-export default HeaderWithAuthContext
+export default withAuthContext(Header)
