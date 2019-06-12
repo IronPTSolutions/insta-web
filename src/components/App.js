@@ -6,6 +6,7 @@ import PostsBase from './posts/PostsBase';
 import NotFound from './misc/NotFound';
 import PostForm from './posts/PostForm';
 import Login from './auth/Login';
+import PrivateRoute from '../guards/PrivateRoute';
 
 function App() {
   return (
@@ -16,8 +17,8 @@ function App() {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/home" component={Home}/>
-          <Route exact path="/posts" component={PostsBase} />
-          <Route exact path="/posts/new" component={PostForm} />
+          <PrivateRoute exact path="/posts" component={PostsBase} />
+          <PrivateRoute exact path="/posts/new" component={PostForm} />
           <Route exact path="/" component={() => (
             <Redirect to="/home" />
           )} />
